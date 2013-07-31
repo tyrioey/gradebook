@@ -36,8 +36,8 @@ public class DropLowestGrades implements GradingScheme {
 
 	//drops lowest weighted grade
 	public void dropLowestGrade() {
-	 double lowest = 100;
-	 String categoryToRemoveFrom = "";
+	 double lowest = 101;
+	 String categoryToRemoveFrom = "error";
 	 int index = 0;
 
 	 for (String category: grades.keySet()) {
@@ -53,6 +53,7 @@ public class DropLowestGrades implements GradingScheme {
 	   }
 	  }
 	 }
+	 System.out.println(categoryToRemoveFrom + " "+index);
 	 grades.get(categoryToRemoveFrom).remove(index);
 	}
 

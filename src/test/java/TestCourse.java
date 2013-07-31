@@ -54,14 +54,17 @@ public class TestCourse {
 	mina.addGrade(new GradebookItem("HW 2", 90, homework));
 	mina.addGrade(new GradebookItem("HW 3", 100, homework));
 	
-	CS2340 = new Course("Objects and Design", 2340,"CS", null);
+	sectionA = new Section("Section A",CS);
+	sectionB = new Section("Section B",CS2);
 	CS = new Class("Summer of Dragon Flame");
 	CS2 = new Class("Winter of Lost Moon");
+	CS.addSection(sectionA);
+	CS2.addSection(sectionB);
+	CS2340 = new Course("Objects and Design", 2340,"CS", null);
 	CS2340.addClass(CS);
 	CS2340.addClass(CS2);
 	
-	sectionA = new Section("Section A",CS);
-	sectionB = new Section("Section B",CS2);
+
 
 	}
 	@Test
