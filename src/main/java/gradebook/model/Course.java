@@ -1,42 +1,50 @@
 package main.java.gradebook.model;
 
-import java.util.*;
+import java.util.ArrayList;
+
+/**
+ * Courses are subjects offered at a school eg ME2110, CS2340
+ * They have Subjects, names, course numbers and prerequisites,
+ * as well as contained semester long Classes
+ * @author Eric
+ *
+ */
 
 public class Course {
 	private String name;
 	private int courseNumber;
 	private String subject;
-	private ArrayList<Course> prereqs;	
+	private ArrayList<Course> prereqs;
 	private ArrayList<Class> classes;
 	private double average;
-	
-	public Course(String cname, int cnumber, String csubject, ArrayList<Course> cprereqs) {
+
+ public Course(String cname, int cnum, String csub, ArrayList<Course> cpre) {
 		name = cname;
-		courseNumber = cnumber;
-		subject = csubject;
-		prereqs = cprereqs;
+		courseNumber = cnum;
+		subject = csub;
+		prereqs = cpre;
 		classes = new ArrayList<Class>();
 		average = 0;
-	}
-	
+ }
+
 	//across classes
 	public double calculateAverage(GradingScheme scheme) {
 	 average = 0;
-	 for(int a = 0; a < classes.size(); a++) {
-	  average+=classes.get(a).calculateAverage(scheme);
+	 for (int a = 0; a < classes.size(); a++) {
+	  average += classes.get(a).calculateAverage(scheme);
 	 }
 	 average /= classes.size();
 	 return average;
 	}
-	
-	
+
 	public void addClass(Class a) {
 	 classes.add(a);
 	}
+
 	public ArrayList<Class> getClasses() {
 		return classes;
 	}
-	
+
 	public String setName(String newName) {
 	 name = newName;
  	 return name;
@@ -56,8 +64,7 @@ public class Course {
 	 prereqs = nPre;
 	 return prereqs;
 	}
-	
-	
+
 	public String getName() {
 		return name;
 	}

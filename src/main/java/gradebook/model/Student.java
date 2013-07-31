@@ -1,12 +1,18 @@
 package main.java.gradebook.model;
 
-import java.util.*;
+import java.util.ArrayList;
+
+/**
+ * A student has grades and a section he belongs to
+ * @author Eric
+ *
+ */
 
 public class Student {
 	private String name;
 	private ArrayList<GradebookItem> grades;
 	private Section section;
-	
+
 	public Student(String cname) {
 	 name = cname;
 	 grades = new ArrayList<GradebookItem>();
@@ -23,25 +29,26 @@ public class Student {
 	 name = newName;
 	 return name;
 	}
+
 	public String getName() {
 	 return name;
 	}
-	
+
 	public Section setSection(Section newSection) {
 	 section = newSection;
 	 return section;
 	}
+
 	public Section getSection() {
 	 return section;
 	}
-	
+
 	public GradebookItem addGrade(GradebookItem aGrade) {
 	 grades.add(aGrade);
 	 return aGrade;
 	}
-	
+
 	public ArrayList<GradebookItem> getGrades() {
 	 return grades;
 	}
-		
 }
