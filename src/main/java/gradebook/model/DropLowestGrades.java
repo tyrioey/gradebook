@@ -53,7 +53,6 @@ public class DropLowestGrades implements GradingScheme {
 	   }
 	  }
 	 }
-	 System.out.println(categoryToRemoveFrom + " "+index);
 	 grades.get(categoryToRemoveFrom).remove(index);
 	}
 

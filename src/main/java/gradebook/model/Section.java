@@ -16,7 +16,7 @@ public class Section {
 	public Section(String aName, Class aParentClass) {
 	 name = aName;
 	 students = new ArrayList<Student>();
-	 parentClass = aParentClass;;
+	 parentClass = aParentClass;
 	}
 
 	public ArrayList<Student> addStudent(Student toAdd) {
