@@ -11,73 +11,73 @@ import java.util.ArrayList;
  */
 
 public class Course {
-	private String name;
-	private int courseNumber;
-	private String subject;
-	private ArrayList<Course> prereqs;
-	private ArrayList<Class> classes;
-	private double average;
+ private String name;
+ private int courseNumber;
+ private String subject;
+ private ArrayList<Course> prereqs;
+ private ArrayList<Class> classes;
+ private double average;
 
  public Course(String cname, int cnum, String csub, ArrayList<Course> cpre) {
-		name = cname;
-		courseNumber = cnum;
-		subject = csub;
-		prereqs = cpre;
-		classes = new ArrayList<Class>();
-		average = 0;
+  name = cname;
+  courseNumber = cnum;
+  subject = csub;
+  prereqs = cpre;
+  classes = new ArrayList<Class>();
+  average = 0;
  }
 
-	//across classes
-	public double calculateAverage(GradingScheme scheme) {
-	 average = 0;
-	 for (int a = 0; a < classes.size(); a++) {
-	  average += classes.get(a).calculateAverage(scheme);
-	 }
-	 average /= classes.size();
-	 return average;
-	}
+//across classes
+ public double calculateAverage(GradingScheme scheme) {
+  average = 0;
+  for (int a = 0; a < classes.size(); a++) {
+   average += classes.get(a).calculateAverage(scheme);
+  }
+  average /= classes.size();
+  return average;
+ }
 
-	public void addClass(Class a) {
-	 classes.add(a);
-	}
+ public void addClass(Class a) {
+  classes.add(a);
+ }
 
-	public ArrayList<Class> getClasses() {
-		return classes;
-	}
+ public ArrayList<Class> getClasses() {
+  return classes;
+ }
 
-	public String setName(String newName) {
-	 name = newName;
- 	 return name;
-	}
+ public String setName(String newName) {
+  name = newName;
+  return name;
+ }
 
-	public int getCourseNumber(int cNumber) {
-	 courseNumber = cNumber;
-	 return courseNumber;
-	}
+ public int getCourseNumber(int cNumber) {
+  courseNumber = cNumber;
+  return courseNumber;
+ }
 
-	public String setSubject(String nSubject) {
-	 subject = nSubject;
-	 return subject;
-	}
+ public String setSubject(String nSubject) {
+  subject = nSubject;
+  return subject;
+ }
 
-	public ArrayList<Course> setPrereqs(ArrayList<Course> nPre) {
-	 prereqs = nPre;
-	 return prereqs;
-	}
+ public ArrayList<Course> setPrereqs(ArrayList<Course> nPre) {
+  prereqs = nPre;
+  return prereqs;
+ }
 
-	public String getName() {
-		return name;
-	}
+ public String getName() {
+  return name;
+ }
 
-	public int getCourseNumber() {
-		return courseNumber;
-	}
+ public int getCourseNumber() {
+  return courseNumber;
+ }
 
-	public String getSubject() {
-		return subject;
-	}
+ public String getSubject() {
+  return subject;
+ }
 
-	public ArrayList<Course> getPrereqs() {
-		return prereqs;
-	}
+ public ArrayList<Course> getPrereqs() {
+  return prereqs;
+ }
 }

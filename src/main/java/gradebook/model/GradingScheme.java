@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 public interface GradingScheme {
 
-	double A = 90;
-	double B = 80;
-	double C = 70;
-	double D = 60;
+ double A = 90;
+ double B = 80;
+ double C = 70;
+ double D = 60;
 
-	void loadGrades(ArrayList<GradebookItem> grades);
+ void loadGrades(ArrayList<GradebookItem> grades);
 
-	double calculateAverage();
+ double calculateAverage();
 
-	String getLetterGrade();
+ String getLetterGrade();
 }
