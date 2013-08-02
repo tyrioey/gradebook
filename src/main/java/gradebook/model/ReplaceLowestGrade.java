@@ -1,11 +1,13 @@
 package main.java.gradebook.model;
 
+import java.util.Collections;
 import java.util.TreeMap;
 import java.util.ArrayList;
 
 /**
  * replaces the lowest weighted grade with the 2nd lowest weighted
- * grade in the same category
+ * grade in the same category. Won't replace if there's only 1 grade in a
+ * category
  * @author Eric
  *
  */
@@ -40,24 +42,41 @@ public class ReplaceLowestGrade implements GradingScheme {
   double lowest = Double.MAX_VALUE;
   double secondLowest = Double.MAX_VALUE;
   GradebookCategory cateRemove = null;
+  GradebookCategory checkSameCate = null;
   int index = 0;
 
   for (String category: grades.keySet()) {
    ArrayList<GradebookItem> cateGrades = grades.get(category);
+   Collections.sort(cateGrades);
+
+   if (cateGrades.size() > 1) {
    for (int a = 0; a < cateGrades.size(); a++) {
+
     GradebookItem currGrade = cateGrades.get(a);
     GradebookCategory cate = currGrade.getGradebookCategory();
-    if (currGrade.getScore() * cate.getWeight() < lowest) {
-     secondLowest = lowest / cate.getWeight();
-     lowest = currGrade.getScore() * cate.getWeight();
+
+    double score = currGrade.getScore() * cate.getWeight();
+
+    if (score < lowest) {
+     lowest = score;
      cateRemove = cate;
      index = a;
+    } else if (score < secondLowest && score > lowest) {
+       secondLowest = score;
+       checkSameCate = cate;
     }
    }
   }
+  }
+  secondLowest /= cateRemove.getWeight();
+  System.out.println(grades);
   grades.get(cateRemove.getName()).remove(index);
-  GradebookItem add = new GradebookItem("Swap", secondLowest, cateRemove);
-  grades.get(cateRemove.getName()).add(add);
+  if (checkSameCate.equals(cateRemove)) {
+   GradebookItem add = new GradebookItem("Swap", secondLowest, cateRemove);
+   grades.get(cateRemove.getName()).add(add);
+  }
+  System.out.println(grades);
+  System.out.println();
  }
 
  public double calculateAverage() {
@@ -78,7 +97,6 @@ public class ReplaceLowestGrade implements GradingScheme {
    weightedaverage = 0;
    count = 0;
   }
-  System.out.println(average);
   return average;
  }
 

@@ -74,14 +74,43 @@ public class TestSection {
 		assertEquals(average, sectionA.calculateAverage(regular),.01);
 		
 	}
-	
-	public void testSectionAverage2() {
+	@Test
+	public void testSectionAverageDrop() {
 		sectionA.addStudent(eric);
 		sectionA.addStudent(mina);
 		sectionA.addStudent(muersa);
 		double average = ((100+90)/2.0 + (100+110)/2.0 + (100+100)/2.0)/3; //100
 		
 		assertEquals(average, sectionA.calculateAverage(drop),.01);
+	}
+	@Test
+	public void testSectionAverageReplace() {
+		sectionA.addStudent(eric);
+		sectionA.addStudent(mina);
+		sectionA.addStudent(muersa);
+		double average = ((100+90+90)/3.0 + (100+110+110)/3.0 + (100+100+100)/3.0)/3; //100
+		
+		assertEquals(average, sectionA.calculateAverage(replace),.01);
+		
+	}
+	
+	@Test
+	public void testSectionAverageReplace2() {
+		sectionA.addStudent(eric);
+		sectionA.addStudent(mina);
+		sectionA.addStudent(muersa);
+		GradebookCategory quiz = new GradebookCategory("Quiz",.6);
+		homework.setWeight(.4);
+		eric.addGrade(new GradebookItem("Quiz 1",100,quiz));
+		mina.addGrade(new GradebookItem("Quiz 1",80,quiz));
+		muersa.addGrade(new GradebookItem("Quiz 1",90,quiz));
+		
+		double average = (100+90+90)/3.0*.4+100*.6;
+		average += (100+100+100)/3.0*.4+80*.6;
+		average += (100+110+110)/3.0*.4+90*.6;
+		average /= 3;
+		
+		assertEquals(average, sectionA.calculateAverage(replace),.01);
 		
 	}
 

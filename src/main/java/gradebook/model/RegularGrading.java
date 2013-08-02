@@ -48,7 +48,6 @@ public class RegularGrading implements GradingScheme {
    weightedaverage = 0;
    count = 0;
   }
-  System.out.println(average);
   return average;
 }
 
